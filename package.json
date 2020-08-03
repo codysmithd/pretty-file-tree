@@ -1,0 +1,21 @@
+{
+  "name": "pretty-file-tree",
+  "version": "1.0.0",
+  "description": "Given a list of file paths, outputs a pretty-printed file tree",
+  "main": "pretty-file-tree.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "util",
+    "utility",
+    "tree",
+    "file",
+    "directory",
+    "print",
+    "cli",
+    "path"
+  ],
+  "author": "codysmithd@gmail.com",
+  "license": "MIT"
+}
