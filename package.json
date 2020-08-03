@@ -17,5 +17,8 @@
     "path"
   ],
   "author": "codysmithd@gmail.com",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^26.2.2"
+  }
 }
