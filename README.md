@@ -1,4 +1,6 @@
 # pretty-file-tree
+[![Build Status](https://travis-ci.org/codysmithd/pretty-file-tree.svg?branch=main)](https://travis-ci.org/codysmithd/pretty-file-tree)
+
 A tiny, simple utility for pretty-printing lists of file paths as a tree for command-line-interfaces.
 
 ## Example
