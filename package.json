@@ -4,7 +4,7 @@
   "description": "Given a list of file paths, outputs a pretty-printed file tree",
   "main": "pretty-file-tree.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "util",
