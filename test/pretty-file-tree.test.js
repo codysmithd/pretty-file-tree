@@ -55,3 +55,20 @@ test('Three directories, one with entries two levels deep, two without', () => {
 |  └── F2
 └── G`);
 });
+
+test('Multiple roots', () => {
+    expect(prettyTree([
+        'A/B/C',
+        'A/B/D/E/F1',
+        'A/B/D/E/F2',
+        'A/B/G',
+        'H'
+    ])).toBe(
+`A/B
+├── C
+├── D/E
+|  ├── F1
+|  └── F2
+└── G
+H`);
+});

@@ -111,7 +111,9 @@ const DEFAULT_OPTIONS = {
     }
 };
 
-module.exports = function (files) {
+function prettyFileTree(files) {
     if (!files || typeof files[Symbol.iterator] !== 'function') { return ''; }
     return printTree(parseTree(files, DEFAULT_OPTIONS), DEFAULT_OPTIONS);
 }
+
+module.exports = prettyFileTree;
