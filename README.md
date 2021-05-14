@@ -23,3 +23,49 @@ home/user
 |  └── baz.js
 └── bat.js
 ```
+
+## Configuring the output tree style
+
+It is possible to change the style of the tree.
+
+### Example
+
+```javascript
+const prettyTree = require('pretty-file-tree');
+
+const options = {
+    throughTee: '├>',
+    endTee: '└>' 
+}
+
+console.log(prettyTree([
+    'home/user/foo.js',
+    'home/user/test/bar.js',
+    'home/user/test/baz.js',
+    'home/user/bat.js'
+], options));
+```
+
+Result
+```
+home/user
+├> foo.js
+├> test
+|  ├> bar.js
+|  └> baz.js
+└> bat.js
+```
+
+## Style Options
+
+### throughTee
+- throughTee option refers to the "├──" default string.
+
+### endTee
+- endTee option refers to the "└──" default string.
+
+### vertical
+- vertical option refers to the "|  " default string.
+
+### emptyColumn
+- emptyColumn option refers to the "   " default string.
