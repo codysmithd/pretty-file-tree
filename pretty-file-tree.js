@@ -111,20 +111,16 @@ const DEFAULT_OPTIONS = {
     }
 };
 
-function structureConfigProps(config) {
-    const sequences = Object.assign(DEFAULT_OPTIONS.sequences, config)
-    const pathSeparator = !config.pathSeparator
-        ? DEFAULT_OPTIONS.pathSeparator
-        : config.pathSeparator
-
-    delete sequences.pathSeparator
+function setStyleProps(options) {
+    const sequences = Object.assign(DEFAULT_OPTIONS.sequences, options)
+    const pathSeparator = DEFAULT_OPTIONS.pathSeparator
     return { sequences, pathSeparator }
 }
 
-function prettyFileTree(files, config = {}) {
-    config = structureConfigProps(config)
+function prettyFileTree(files, options = {}) {
+    options = setStyleProps(options)
     if (!files || typeof files[Symbol.iterator] !== 'function') { return ''; }
-    return printTree(parseTree(files, config), config);
+    return printTree(parseTree(files, options), options);
 }
 
 module.exports = prettyFileTree;
