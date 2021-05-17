@@ -22,8 +22,8 @@ class RenderTableEntry {
     }
 }
 
-function parseTree (filePaths, options) {
-    const PATH_SEPARATOR =options.pathSeparator;
+function parseTree(filePaths, options) {
+    const PATH_SEPARATOR = options.pathSeparator;
     const roots = new Map();
 
     // Parse into tree
@@ -62,12 +62,12 @@ function builderRenderTable(roots, pathSeparator) {
             currentNode.children = childNode.children;
         }
 
-        let children =  [...currentNode.children.values()];
+        let children = [...currentNode.children.values()];
         if (children.length > 0) {
-            for(const child of children) {
+            for (const child of children) {
                 nodeDepths.set(child, nodeDepth + 1);
             }
-            lastNodes.add(children[children.length -1]);
+            lastNodes.add(children[children.length - 1]);
             toVisit = children.concat(toVisit);
         }
 
@@ -76,7 +76,7 @@ function builderRenderTable(roots, pathSeparator) {
     return renderTable;
 }
 
-function printTree (renderTable, options) {
+function printTree(renderTable, options) {
     let outputString = '';
     let activeColumns = []; // Columns we are currently rendering because they are open
     for (const tableEntry of renderTable) {
@@ -103,17 +103,24 @@ function printTree (renderTable, options) {
 
 const DEFAULT_OPTIONS = {
     pathSeparator: '/',
-    sequences : {
-        throughTee : '├──',
-        endTee : '└──',
-        vertical : '|  ',
-        emptyColumn : '   '
+    sequences: {
+        throughTee: '├──',
+        endTee: '└──',
+        vertical: '|  ',
+        emptyColumn: '   '
     }
 };
 
-function prettyFileTree(files) {
+function setStyleProps(options) {
+    const sequences = Object.assign(DEFAULT_OPTIONS.sequences, options)
+    const pathSeparator = DEFAULT_OPTIONS.pathSeparator
+    return { sequences, pathSeparator }
+}
+
+function prettyFileTree(files, options = {}) {
+    options = setStyleProps(options)
     if (!files || typeof files[Symbol.iterator] !== 'function') { return ''; }
-    return printTree(parseTree(files, DEFAULT_OPTIONS), DEFAULT_OPTIONS);
+    return printTree(parseTree(files, options), options);
 }
 
 module.exports = prettyFileTree;

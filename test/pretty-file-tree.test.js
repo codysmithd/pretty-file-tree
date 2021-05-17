@@ -72,3 +72,23 @@ test('Multiple roots', () => {
 └── G
 H`);
 });
+
+test('other formatting strings', () => {
+    expect(prettyTree([
+        'A/B/C',
+        'A/B/D/E/F1',
+        'A/B/D/E/F2',
+        'A/B/G',
+        'H'
+    ], {
+        throughTee: '├>',
+        endTee: '└>' 
+    })).toBe(
+`A/B
+├> C
+├> D/E
+|  ├> F1
+|  └> F2
+└> G
+H`);
+})
